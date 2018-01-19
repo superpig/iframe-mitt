@@ -2,7 +2,8 @@ import Mitt from 'mitt';
 const emitter = Mitt();
 
 export default class {
-    init () {
+    static init () {
+        debugger;
         window.addEventListener('message', (e) => {
             if (!e.data || !e.data.type) return;
 
@@ -18,23 +19,23 @@ export default class {
         this.postMessage(message, '*');
 
     }
-    postMessage (message, targetOrigin, transfer) {
+    static postMessage (message, targetOrigin, transfer) {
         if (window.parent) {
             console.log(message, targetOrigin, transfer);
             window.parent.postMessage(message, targetOrigin, transfer);
         }
     }
-    emit (type, { message, targetOrigin, transfer }) {
+    static emit (type, { message, targetOrigin, transfer }) {
         const data = {
             type,
             message
         };
         this.postMessage(data, targetOrigin, transfer);
     }
-    on (type, handler) {
+    static on (type, handler) {
         emitter.on(type, handler);
     }
-    off (type, handler) {
+    static off (type, handler) {
         emitter.off(type, handler);
     }
 }
