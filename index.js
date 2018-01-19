@@ -3,5 +3,5 @@ import parent from './src/parent';
 
 export default {
     child,
-    Parent
+    parent
 }; 
