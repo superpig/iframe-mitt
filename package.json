@@ -1,6 +1,6 @@
 {
   "name": "iframe-mitt",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "communicate with iframe ",
   "jsnext:main": "dist/iframe-mitt.es.js",
   "module": "dist/iframe-mitt.es.js",
