@@ -1,7 +1,7 @@
-import Child from './src/child';
-import Parent from './src/parent';
+import child from './src/child';
+import parent from './src/parent';
 
 export default {
-    Child,
+    child,
     Parent
 }; 
