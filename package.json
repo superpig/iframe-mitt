@@ -10,11 +10,11 @@
     "bump": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src test",
-    "build": "npm-run-all --silent clean -p rollup -p minify:* -s docs size",
+    "build": "npm-run-all --silent clean -p rollup -p minify:* -s",
     "clean": "rimraf dist",
     "rollup": "rollup -c",
-    "minify:cjs": "uglifyjs $npm_package_main -cm toplevel -o $npm_package_main -p relative --in-source-map ${npm_package_main}.map --source-map ${npm_package_main}.map",
-    "minify:umd": "uglifyjs $npm_package_umd_main -cm -o $npm_package_umd_main -p relative --in-source-map ${npm_package_umd_main}.map --source-map ${npm_package_umd_main}.map",
+    "minify:cjs": "uglifyjs $npm_package_main -cm toplevel -o $npm_package_main",
+    "minify:umd": "uglifyjs $npm_package_umd_main -cm -o $npm_package_umd_main",
     "docs": "documentation readme src/index.js --section API -q",
     "release": "npm run build -s && npm run bump && git push --follow-tags origin master && npm publish"
   },
@@ -74,8 +74,11 @@
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
     "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
     "rollup": "^0.54.1",
     "rollup-plugin-buble": "^0.18.0",
-    "standard-version": "^4.3.0"
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "standard-version": "^4.3.0",
+    "uglify-js": "^3.3.7"
   }
 }

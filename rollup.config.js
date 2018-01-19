@@ -1,18 +1,41 @@
 import buble from 'rollup-plugin-buble';
 import fs from 'fs';
+import resolve from 'rollup-plugin-node-resolve';
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'));
 
 export default {
-	entry: 'index.js',
-	useStrict: false,
-	sourceMap: true,
+    input: 'index.js',
+    external: [ 'mitt' ],
 	plugins: [
-		buble()
-	],
-	targets: [
-		{ dest: pkg.main, format: 'cjs' },
-		{ dest: pkg.module, format: 'es' },
-		{ dest: pkg['umd:main'], format: 'umd', moduleName: pkg.name }
-	]
+        buble(),
+        resolve()
+    ],
+	output: [
+		{ 
+            file: pkg.main,
+            format: 'cjs',
+            sourcemap: true,
+            globals: {
+                mitt: 'mitt'
+            }
+        },
+		{ 
+            file: pkg.module, 
+            format: 'es',
+            sourcemap: true,
+            globals: {
+                mitt: 'mitt'
+            }
+        },
+		{ 
+            file: pkg['umd:main'], 
+            format: 'umd', 
+            sourcemap: true,
+            name: pkg.name,
+            globals: {
+                mitt: 'mitt'
+            }
+        }
+    ]
 };
