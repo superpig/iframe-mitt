@@ -1,0 +1,27 @@
+{
+  "name": "iframe-mitt",
+  "version": "0.0.1",
+  "description": "communicate with iframe ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superpig/iframe-mitt.git"
+  },
+  "keywords": [
+    "iframe",
+    "mitt",
+    "event"
+  ],
+  "author": "zhuchao02 <zhuchao02@meituan.com> (https://github.com/superpig)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/superpig/iframe-mitt/issues"
+  },
+  "homepage": "https://github.com/superpig/iframe-mitt#readme",
+  "dependencies": {
+    "mitt": "^1.1.3"
+  }
+}
