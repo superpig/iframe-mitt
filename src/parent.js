@@ -16,7 +16,7 @@ export default class {
     static init () {
         window.addEventListener('message', (e) => {
             if (!e.data || !e.data.type) return;
-            
+
             const type = e.data.type;
             if (type === 'iframe_mitt:ready') {
                 Iframe.window = e.source;
@@ -31,7 +31,7 @@ export default class {
                     data: e.data.message,
                     origin: e.origin,
                     source: e.source
-                }
+                };
                 emitter.emit(e.data.type, message);
             }
         }, false);
@@ -39,7 +39,7 @@ export default class {
     static emit (type, { message, targetOrigin, transfer }) {
         Iframe.ready(() => {
             const data = { type, message };
-            console.log(data, targetOrigin, transfer);
+            window.console.info(data, targetOrigin, transfer);
             return Iframe.window.postMessage(data, targetOrigin, transfer);
         });
     }

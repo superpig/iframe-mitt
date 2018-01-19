@@ -10,7 +10,7 @@ export default class {
                 data: e.data.message,
                 origin: e.origin,
                 source: e.source
-            }
+            };
             emitter.emit(e.data.type, message);
         });
 
@@ -23,7 +23,7 @@ export default class {
     }
     static postMessage (message, targetOrigin, transfer) {
         if (window.parent) {
-            console.log(message, targetOrigin, transfer);
+            window.console.info(message, targetOrigin, transfer);
             window.parent.postMessage(message, targetOrigin, transfer);
         }
     }

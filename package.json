@@ -2,9 +2,21 @@
   "name": "iframe-mitt",
   "version": "0.0.2",
   "description": "communicate with iframe ",
-  "main": "index.js",
+  "jsnext:main": "dist/iframe-mitt.es.js",
+  "module": "dist/iframe-mitt.es.js",
+  "main": "dist/iframe-mitt.js",
+  "umd:main": "dist/iframe-mitt.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bump": "standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src test",
+    "build": "npm-run-all --silent clean -p rollup -p minify:* -s docs size",
+    "clean": "rimraf dist",
+    "rollup": "rollup -c",
+    "minify:cjs": "uglifyjs $npm_package_main -cm toplevel -o $npm_package_main -p relative --in-source-map ${npm_package_main}.map --source-map ${npm_package_main}.map",
+    "minify:umd": "uglifyjs $npm_package_umd_main -cm -o $npm_package_umd_main -p relative --in-source-map ${npm_package_umd_main}.map --source-map ${npm_package_umd_main}.map",
+    "docs": "documentation readme src/index.js --section API -q",
+    "release": "npm run build -s && npm run bump && git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",
@@ -21,7 +33,49 @@
     "url": "https://github.com/superpig/iframe-mitt/issues"
   },
   "homepage": "https://github.com/superpig/iframe-mitt#readme",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": [
+              "chrome >= 38"
+            ]
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "mocha": true,
+      "es6": true
+    },
+    "globals": {
+      "expect": true
+    },
+    "rules": {
+      "semi": [
+        2,
+        "always"
+      ]
+    }
+  },
   "dependencies": {
     "mitt": "^1.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.38",
+    "@babel/preset-env": "^7.0.0-beta.38",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "npm-run-all": "^4.1.2",
+    "rollup": "^0.54.1",
+    "rollup-plugin-buble": "^0.18.0",
+    "standard-version": "^4.3.0"
   }
 }
