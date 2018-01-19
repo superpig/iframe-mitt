@@ -1,6 +1,6 @@
 # iframe-mitt
 
-- 解决问题：保证父级 window 向 iframe 发送 postMessage 的可靠性和完整性
+- 解决问题：保证父级 window 向 iframe 发送 postMessage 的可靠性和完整性
 - 优点：使用轻量的 `mitt`，支持其所有接口，无需自己维护消息队列
 
 
