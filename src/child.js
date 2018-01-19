@@ -1,15 +1,17 @@
-import Mitt from 'mitt';
-const emitter = Mitt();
+import mitt from 'mitt';
+const emitter = mitt();
 
 export default class {
     static init () {
-        debugger;
         window.addEventListener('message', (e) => {
             if (!e.data || !e.data.type) return;
 
-            const { type, message } = e.data;
-            e.data = message;
-            emitter.emit(type, e);
+            const message = {
+                data: e.data.message,
+                origin: e.origin,
+                source: e.source
+            }
+            emitter.emit(e.data.type, message);
         });
 
         const message = {
@@ -26,10 +28,7 @@ export default class {
         }
     }
     static emit (type, { message, targetOrigin, transfer }) {
-        const data = {
-            type,
-            message
-        };
+        const data = { type, message };
         this.postMessage(data, targetOrigin, transfer);
     }
     static on (type, handler) {
