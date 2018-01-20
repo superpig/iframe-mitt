@@ -98,8 +98,8 @@ defaultExport$1.off = function off (type, handler) {
 };
 
 var index = {
-    Child: defaultExport,
-    Parent: defaultExport$1
+    child: defaultExport,
+    parent: defaultExport$1
 };
 
 export default index;
