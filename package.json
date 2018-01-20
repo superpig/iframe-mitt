@@ -30,6 +30,10 @@
   ],
   "author": "zhuchao02 <940578704@qq.com> (https://github.com/superpig)",
   "license": "MIT",
+  "files": [
+    "src",
+    "dist"
+  ],
   "bugs": {
     "url": "https://github.com/superpig/iframe-mitt/issues"
   },
