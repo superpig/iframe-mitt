@@ -76,9 +76,8 @@ IframeMitt.child.on('*', (type, event) => {
 注册 message 事件的处理函数
 
 **参数**
-
- - `type`: String 类型，事件名称，`"*"` 表示所有事件
- - `handler`: Function 类型，响应事件的处理函数，该函数的 event 参数的属性如下，具体参考[Window.postMessage][2]：
+ - `type`:  String 类型，事件名称，`"*"` 表示所有事件
+ - `handler`:  Function 类型，响应事件的处理函数，该函数的 event 参数的属性如下，具体参考[Window.postMessage][2]：
     - **data**: 从其他 window 传递过来的对象
     - **orgin**: 调用 postMessage  时消息发送方窗口的 origin . 这个字符串由 协议、“://“、域名、“ : 端口号”拼接而成。
     - **source**: 对发送消息的窗口对象的引用; 
@@ -86,14 +85,16 @@ IframeMitt.child.on('*', (type, event) => {
 ### off
 移除 message 事件的处理函数
 
- - `type`: String 类型，事件名称，`"*"` 表示所有事件
- - `handler`: Function 类型，要移除的处理函数
+**参数**
+ - `type`:  String 类型，事件名称，`"*"` 表示所有事件
+ - `handler`:  Function 类型，要移除的处理函数
 
 ### emit
 调用该事件的所有处理函数，`"*"` 的处理函数在具体事件的处理函数之后调用
 
- - `type`: String 类型，事件名称
- - `evt`: Object 类型，包含三个参数：{ message, targetOrigin, transfer }，与postMessage参数含义一致，具体含义可以参考[Window.postMessage][2]
+**参数**
+ - `type`:  String 类型，事件名称
+ - `event`:  Object 类型，包含三个参数：`{ message, targetOrigin, transfer }`，与 postMessage 参数含义一致，具体含义可以参考[Window.postMessage][2]
 
 
   [1]: https://github.com/developit/mitt
